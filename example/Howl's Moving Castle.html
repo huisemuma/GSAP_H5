@@ -237,7 +237,8 @@ var init = function() {
     TweenLite.to($('.load-gate'), 0.5, {alpha: 0, onComplete: function() {
         $('.load-gate').remove();
     }});
-    requestAnimationFrame(draw);
+    //requestAnimationFrame(draw);
+    TweenLite.to(_castle, 0.5, {x:-800, y:-1100, overwrite:true});
     cloudIntro();
 };
 console.log("asdf")
