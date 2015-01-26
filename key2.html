@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>keyboard Events</title>
+ 
+<style>
+body{
+    background-color:#000;
+}
+#demo {
+    width: 692px;
+    height: 60px;
+    background-color: #333;
+    padding: 8px;
+}
+#logo {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: url(img/fox.png) no-repeat;
+}
+</style>
+</head>
+ 
+<body>
+<div id="demo">
+    <div id="logo"></div>
+</div>
+ 
+ 
+<script type="text/javascript" src="js/greensock/TweenMax.min.js"></script>
+<script src="js/jquery-1.11.2.js"></script>
+ 
+<script>
+$(window).load(function() {
+	var logo = document.getElementById("logo");
+    var keySum = 0
+    var jumping = false;
+    var speed = 10;
+    var speed45 = 0.7 * speed;
+    var keyBox = [];
+    TweenLite.to(logo, 1, {rotationY:180, y:"100px", left:"332px"});
+
+    function keyListen() {
+        console.log(logo.x)
+    }
+
+   window.setInterval(move8, 1000/100)
+
+
+
+    function onKeyDownEvent (event){
+		switch(event.keyCode)
+		{
+    		case 65:
+            if(keySum < 1000)
+            {
+                keySum += 1000;
+            }
+    		break;
+    		
+    		case 68:
+            if(keySum % 100 < 10)
+            {
+                keySum += 10;
+            }
+    		break;
+    		
+    		case 83:
+            if(keySum%10 < 1)
+            {
+                keySum += 1;
+            }
+    		break;
+    		
+    		case 87:
+            if(keySum%1000 < 100)
+            {
+                keySum += 100;
+            }
+            break;
+    		
+    		default:
+    	}
+
+        //move8()
+    }
+
+    function onKeyUpEvent (event){
+        switch(event.keyCode)
+        {
+            case 65:
+            
+            if(keySum >= 1000)
+            {
+                keySum -= 1000;
+            }
+            //
+            break;
+            
+            case 68:
+            if(keySum % 100 >= 10)
+            {
+                keySum -= 10;
+            }
+            break;
+            
+            case 83:
+            if(keySum%10 >= 1)
+            {
+                keySum -= 1;
+            }
+            break;
+            
+            case 87:
+            if(keySum%1000 >= 100)
+            {
+                keySum -= 100;
+            }
+            break;
+            
+            default:
+        }
+
+        //move8();
+    }
+
+   function move8()
+   {
+    switch (keySum)
+    {
+        case 1000:
+        //console.log("A");
+        TweenLite.to(logo, 0.1, {x:"-=11"});
+        break;
+
+        case 100:
+        //console.log("W");
+        TweenLite.to(logo, 0.1, {y:"-=11"});
+        break;
+
+        case 10:
+        //console.log("D");
+        TweenLite.to(logo, 0.1, {x:"+=11"});
+        break;
+
+        case 1:
+        //console.log("S");
+        TweenLite.to(logo, 0.1, {y:"+=11"});
+        break;
+
+        case 1100:
+        //console.log("WA");
+        TweenLite.to(logo, 0.1, {x:"-=8", y:"-=8"});
+        break;
+
+        case 110:
+        //console.log("WS");
+        TweenLite.to(logo, 0.1, {x:"+=8", y:"-=8"});
+        break;
+
+        case 11:
+        //console.log("SD");
+        TweenLite.to(logo, 0.1, {x:"+=8", y:"+=8"});
+        break;
+
+        case 1001:
+        //console.log("AD");
+        TweenLite.to(logo, 0.1, {x:"-=8", y:"+=8"});
+        break;
+    }
+   }
+    window.addEventListener('keydown', onKeyDownEvent, false);
+    window.addEventListener('keyup', onKeyUpEvent, false);
+
+    function jump()
+    {
+        if(!jumping)
+        {
+            jumping = true;
+            TweenLite.to(logo, 0.2, {y:260, ease:Quad.easeOut});
+            TweenLite.to(logo, 0.2, {y:300, delay:0.2, ease:Quad.easeIn});
+            TweenLite.delayedCall(0.4, function () {jumping = false;})
+        }
+    }
+});
+ 
+</script>
+</body>
+</html>
