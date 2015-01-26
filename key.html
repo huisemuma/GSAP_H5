@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>keyboard Events</title>
+ 
+<style>
+body{
+    background-color:#000;
+}
+#demo {
+    width: 692px;
+    height: 60px;
+    background-color: #333;
+    padding: 8px;
+}
+#logo {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: url(img/fox.png) no-repeat;
+}
+</style>
+</head>
+ 
+<body>
+<div id="demo">
+    <div id="logo"></div>
+</div>
+ 
+ 
+<script type="text/javascript" src="js/greensock/TweenMax.min.js"></script>
+<script src="js/jquery-1.11.2.js"></script>
+ 
+<script>
+$(window).load(function() {
+	var logo = document.getElementById("logo");
+	var L = false;
+    TweenLite.to(logo, 1, {rotationY:180, left:"632px"});
+    function onKeyboardEvent (event){
+		switch(event.keyCode)
+		{
+    		case 65:
+    		if(!L)
+    		{
+    			TweenLite.to(logo, 0.1, {x:"-=11", rotationY:0, overwrite:false});
+    			L = true;
+    		}
+    		console.log("A");
+    		TweenLite.to(logo, 0.1, {x:"-=11"});
+    		break;
+    		
+    		case 68:
+    		if(L)
+    		{
+    			TweenLite.to(logo, 0.1, {x:"+=11", rotationY:180, overwrite:false});
+    			L = false;
+    		}
+    		console.log("D");
+    		TweenLite.to(logo, 0.1, {x:"+=11"});
+    		break;
+    		
+    		case 83:
+    		console.log("S");
+    		TweenLite.to(logo, 0.1, {y:"+=11"});
+    		break;
+    		
+    		case 87:
+    		console.log("W");
+    		TweenLite.to(logo, 0.1, {y:"-=11"});
+    		break;
+    		
+    		default:
+    		//console.log(event.keyCode)
+    	}
+    }
+    window.addEventListener('keydown', onKeyboardEvent, false);
+    //window.addEventListener('keyup', onKeyboardEvent, false);
+});
+ 
+</script>
+</body>
+</html>
