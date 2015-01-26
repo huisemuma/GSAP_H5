@@ -18,7 +18,7 @@ body{
     position: relative;
     width: 100px;
     height: 100px;
-    background: url(https://raw.githubusercontent.com/huisemuma/GSAP_H5/master/img/fox.png) no-repeat;
+    background: url(img/fox.png) no-repeat;
 }
 </style>
 </head>
@@ -36,7 +36,8 @@ body{
 $(window).load(function() {
 	var logo = document.getElementById("logo");
 	var L = false;
-    TweenLite.to(logo, 1, {rotationY:180, left:"632px"});
+    var jumping = false;
+    TweenLite.to(logo, 1, {rotationY:180, y:"300px", left:"632px"});
     function onKeyboardEvent (event){
 		switch(event.keyCode)
 		{
@@ -67,12 +68,24 @@ $(window).load(function() {
     		
     		case 87:
     		console.log("W");
-    		TweenLite.to(logo, 0.1, {y:"-=11"});
-    		break;
+    		//TweenLite.to(logo, 0.1, {y:"-=11"});
+    		jump();
+            break;
     		
     		default:
     		//console.log(event.keyCode)
     	}
+    }
+
+    function jump()
+    {
+        if(!jumping)
+        {
+            jumping = true;
+            TweenLite.to(logo, 0.2, {y:260, ease:Quad.easeOut});
+            TweenLite.to(logo, 0.3, {y:300, delay:0.2, ease:Quad.easeIn});
+            TweenLite.delayedCall(0.5, function () {jumping = false;})
+        }
     }
     window.addEventListener('keydown', onKeyboardEvent, false);
     //window.addEventListener('keyup', onKeyboardEvent, false);
