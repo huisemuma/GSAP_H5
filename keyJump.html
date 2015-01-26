@@ -19,6 +19,7 @@ body{
     width: 100px;
     height: 100px;
     background: url(img/fox.png) no-repeat;
+    transform-origin: 50% 100%;
 }
 </style>
 </head>
@@ -167,12 +168,22 @@ $(window).load(function() {
         case 1100:
         //console.log("WA");
         TweenLite.to(logo, 0.1, {x:"-=9"});
+        if(!toLeft)
+        {
+            toLeft = true;
+            TweenLite.to(logo, 0.1, {rotationY:"0"});
+        }
         jump()
         break;
 
         case 110:
-        //console.log("WS");
+        //console.log("WD");
         TweenLite.to(logo, 0.1, {x:"+=9"});
+        if(toLeft)
+        {
+             toLeft = false;
+            TweenLite.to(logo, 0.1, {rotationY:"-180"});
+        }
         jump()
         break;
 
