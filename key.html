@@ -37,7 +37,16 @@ $(window).load(function() {
 	var logo = document.getElementById("logo");
 	var L = false;
     var jumping = false;
+    var keyBox = [];
     TweenLite.to(logo, 1, {rotationY:180, y:"300px", left:"632px"});
+
+    function keyListen() {
+        console.log(logo.x)
+    }
+
+   window.setInterval(keyListen, 1000/100)
+
+
     function onKeyboardEvent (event){
 		switch(event.keyCode)
 		{
@@ -83,8 +92,8 @@ $(window).load(function() {
         {
             jumping = true;
             TweenLite.to(logo, 0.2, {y:260, ease:Quad.easeOut});
-            TweenLite.to(logo, 0.3, {y:300, delay:0.2, ease:Quad.easeIn});
-            TweenLite.delayedCall(0.5, function () {jumping = false;})
+            TweenLite.to(logo, 0.2, {y:300, delay:0.2, ease:Quad.easeIn});
+            TweenLite.delayedCall(0.4, function () {jumping = false;})
         }
     }
     window.addEventListener('keydown', onKeyboardEvent, false);
