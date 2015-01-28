@@ -1,0 +1,104 @@
+
+<!DOCTYPE html><html class=''>
+<head><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="canonical" href="http://codepen.io/gordonnl/pen/byouf" />
+
+
+<style class="cp-pen-styles">html, body { height: 100%; margin: 0; background: #2294b3; overflow: hidden; }
+
+.armL,
+.armR,
+.legL,
+.legR,
+.body,
+.head,
+.tail,
+.dog { position: absolute; transform-style: preserve-3d; }
+
+.armL { left: 233px; top: 166px; transform-origin: 33% 17%; transform: rotateZ(0deg); }
+.armR { left: 222px; top: 178px; transform-origin: 33% 17%; transform: rotateZ(0deg); }
+.legL { left: 131px; top: 153px; transform-origin: 50% 25%; transform: rotateZ(0deg); }
+.legR { left: 121px; top: 163px; transform-origin: 50% 25%; transform: rotateZ(0deg); }
+.body { left: 127px; top: 128px; transform-origin: 60% 40%; transform: rotateZ(0deg); }
+.head { left: 235px; top: 80px; transform-origin: 10% 87%; transform: rotateZ(0deg); }
+.tail { left: 75px; top: 132px; transform-origin: 90% 10%; transform: rotateZ(0deg); }
+
+</style></head><body>
+<!--<audio src="http://cinemont.com/tutorials/howls/in_the_rain.mp3" autoplay loop></audio>-->
+<div class="dog">
+
+        <div class="armL">
+            <img class="ParmL" src="img/armL.png">
+        </div>
+        <div class="legL">
+            <img class="PlegL" src="img/legL.png">
+        </div>
+        <div class="body">
+            <img class="Pbody" src="img/body.png">
+        </div>
+        <div class="armR">
+            <img class="ParmR" src="img/armR.png">
+        </div>
+        <div class="legR">
+            <img class="PlegR" src="img/legR.png">
+        </div>
+        <div class="tail">
+            <img class="Ptail" src="img/tail.png">
+        </div>
+        <div class="head">
+            <img class="Phead" src="img/head.png">
+        </div>
+</div>
+ 
+
+<script type="text/javascript" src="js/greensock/TweenMax.min.js"></script>
+<script src="js/jquery-1.11.2.js"></script>
+<script>
+
+    var dog = $('.dog')
+    var L = false;
+    TweenLite.to(dog, 1, {rotationY:20, y:"300px"});
+    addEventListener('mousedown', follow)
+
+    function follow(event)
+    {  
+        console.log("asd")
+       TweenLite.to(dog, 0.3, {x:event.pageX - 200, y:event.pageY - 150})
+    }
+
+    var tl1 = new TimelineMax({repeat: -1, delay:0, onReverseComplete: function() {this.seek(tl1.duration())}});
+    var _armL = $('.armL');
+    TweenLite.set(_armL, {scaleY:1.2, rotationZ: 15});
+    tl1.add([
+        TweenLite.to(_armL, 0.5, {scaleY:1, rotationZ: -15, delay: 0.0, force3D: true}),
+        TweenLite.to(_armL, 0.5, {scaleY:1.2, rotationZ: -10, delay: 0.5, overwrite:false, force3D: true}),
+        TweenLite.to(_armL, 1.0, {scaleY:1.2, rotationZ: 15, delay: 1, force3D: true}),
+    ]);
+
+    var tl2 = new TimelineMax({repeat: -1, delay:0.7, onReverseComplete: function() {this.seek(tl2.duration())}});
+    var _armR = $('.armR');
+    TweenLite.set(_armR, {scaleY:1.2, rotationZ: 15});
+    tl2.add([
+        TweenLite.to(_armR, 0.5, {scaleY:1, rotationZ: -15, delay: 0.0, force3D: true}),
+        TweenLite.to(_armR, 0.5, {scaleY:1.2, rotationZ: -10, delay: 0.5, overwrite:false, force3D: true}),
+        TweenLite.to(_armR, 1.0, {scaleY:1.2, rotationZ: 15, delay: 1, force3D: true}),
+    ]);
+
+    var tl3 = new TimelineMax({repeat: -1, delay:1.4, onReverseComplete: function() {this.seek(tl3.duration())}});
+    var _legL = $('.legL');
+    TweenLite.set(_legL, {scaleY:1.2, rotationZ: 15});
+    tl3.add([
+        TweenLite.to(_legL, 0.5, {scaleY:1, rotationZ: -15, delay: 0.0, force3D: true}),
+        TweenLite.to(_legL, 0.5, {scaleY:1.2, rotationZ: -10, delay: 0.5, overwrite:false, force3D: true}),
+        TweenLite.to(_legL, 1.0, {scaleY:1.2, rotationZ: 15, delay: 1, force3D: true}),
+    ]);
+
+    var tl4 = new TimelineMax({repeat: -1, delay:2.1, onReverseComplete: function() {this.seek(tl4.duration())}});
+    var _legR = $('.legR');
+    TweenLite.set(_legR, {scaleY:1.2, rotationZ: 15});
+    tl4.add([
+        TweenLite.to(_legR, 0.5, {scaleY:1, rotationZ: -15, delay: 0.0, force3D: true}),
+        TweenLite.to(_legR, 0.5, {scaleY:1.2, rotationZ: -10, delay: 0.5, overwrite:false, force3D: true}),
+        TweenLite.to(_legR, 1.0, {scaleY:1.2, rotationZ: 15, delay: 1, force3D: true}),
+    ]);
+</script>
+</body></html>
