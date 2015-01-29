@@ -1,0 +1,66 @@
+
+<!DOCTYPE html><html class=''>
+<head><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="canonical" href="http://codepen.io/gordonnl/pen/byouf" />
+
+
+<style class="cp-pen-styles">html, body { height: 100%; margin: 0; background: #2294b3; overflow: hidden; }
+
+.blueBox,
+.redBox,
+.redBox2,
+.box { position: absolute; transform-style: preserve-3d; transform: perspective(1600px) rotateY(45deg);}
+
+.blueBox { left: 20px; top: 20px; transform-origin: 33% 17%; transform: rotateZ(0deg); }
+.redBox { left: 0px; top: 0px; transform-origin: 33% 17%; transform: rotateZ(0deg); }
+.redBox2 { left: -20px; top: -20px; transform-origin: 33% 17%; transform: rotateZ(0deg); }
+
+</style></head><body>
+<!--<audio src="http://cinemont.com/tutorials/howls/in_the_rain.mp3" autoplay loop></audio>-->
+<div class="box">
+    <div class="blueBox">
+        <img class="b" src="img/blueBox.png">
+    </div>
+    
+    <div class="redBox">
+        <img class="r" src="img/redBox.png">
+    </div>
+    <div class="redBox2">
+        <img class="r2" src="img/redBox.png">
+    </div>
+</div>
+<div class="recBox">
+    
+</div>
+ 
+
+<script type="text/javascript" src="js/greensock/TweenMax.min.js"></script>
+<script src="js/jquery-1.11.2.js"></script>
+<script>
+
+    var box = $('.box')
+    var redBox = $('.redBox')
+    var redBox2 = $('.redBox2')
+    var blueBox = $('.blueBox')
+    var L = false;
+    TweenLite.to(box, 4, {rotationY:"45deg", x:300, y:300});
+    TweenLite.to(redBox2, 1, {scaleX:1.2, scaleY:1.2, z:20});
+    addEventListener('mousedown', mDown)
+    addEventListener('mouseup', mUp)
+    function mDown(event)
+    {  
+        console.log("down")
+        //TweenLite.to(box, 0.3, {rotationY:75});
+        TweenLite.to(blueBox, 0.3, {scaleX:1.5, scaleY:1.5, z:60, force3D: true})
+    }
+
+    function mUp(event)
+    {  
+        console.log("up")
+        //TweenLite.to(box, 0.3, {rotationY:0});
+        TweenLite.to(blueBox, 0.3, {scaleX:1, scaleY:1, z:0, force3D: true})
+        console.log(blueBox.z);
+    }
+
+
+</script>
+</body></html>

@@ -74,7 +74,7 @@
         TweenLite.to(_armL, 1.0, {scaleY:1.2, rotationZ: 15, delay: 1, force3D: true}),
     ]);
 
-    var tl2 = new TimelineMax({repeat: -1, delay:0.7, onReverseComplete: function() {this.seek(tl2.duration())}});
+    var tl2 = new TimelineMax({repeat: -1, delay:0.6, onReverseComplete: function() {this.seek(tl2.duration())}});
     var _armR = $('.armR');
     TweenLite.set(_armR, {scaleY:1.2, rotationZ: 15});
     tl2.add([
@@ -83,7 +83,7 @@
         TweenLite.to(_armR, 1.0, {scaleY:1.2, rotationZ: 15, delay: 1, force3D: true}),
     ]);
 
-    var tl3 = new TimelineMax({repeat: -1, delay:1.4, onReverseComplete: function() {this.seek(tl3.duration())}});
+    var tl3 = new TimelineMax({repeat: -1, delay:1.2, onReverseComplete: function() {this.seek(tl3.duration())}});
     var _legL = $('.legL');
     TweenLite.set(_legL, {scaleY:1.2, rotationZ: 15});
     tl3.add([
@@ -92,7 +92,7 @@
         TweenLite.to(_legL, 1.0, {scaleY:1.2, rotationZ: 15, delay: 1, force3D: true}),
     ]);
 
-    var tl4 = new TimelineMax({repeat: -1, delay:2.1, onReverseComplete: function() {this.seek(tl4.duration())}});
+    var tl4 = new TimelineMax({repeat: -1, delay:1.8, onReverseComplete: function() {this.seek(tl4.duration())}});
     var _legR = $('.legR');
     TweenLite.set(_legR, {scaleY:1.2, rotationZ: 15});
     tl4.add([
