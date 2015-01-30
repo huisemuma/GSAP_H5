@@ -1,0 +1,94 @@
+
+<!DOCTYPE html><html class=''>
+<head><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="canonical" href="http://codepen.io/gordonnl/pen/byouf" />
+
+
+<style class="cp-pen-styles">html, body { height: 100%; margin: 0; background: #2294b3; overflow: hidden; }
+
+.bottomBox,
+.bottomBox2,
+.zero,
+.foot,
+.sLeg2,
+.sLeg1,
+.bLeg,
+.leg{ position: absolute; transform-style: preserve-3d; },
+.legBox{ position: absolute; transform-style: preserve-3d; },
+
+
+.legBox { left: 0px; top: 0x; transform-origin: -150px% 50%; transform: rotateZ(0deg); }
+.zero { left: -20px; top: -20px; transform-origin: 50% 50%; transform: rotateZ(0deg); }
+.leg { left: 20px; top: 20px; transform-origin: 40px 40px; transform: rotateZ(0deg); }
+.bLeg { left: 0x; top: 0px; transform-origin: 40px 40px; transform: rotateZ(0deg); }
+.bottomBox { left: 0px; top: 138px; transform-origin: 42px 42px; transform: rotateZ(0deg); }
+.sLeg1 { left: 0px; top: 0px; transform-origin: 50% 50%; transform: rotateZ(0deg); }
+.bottomBox2 { left: 44px; top: 100px; transform-origin: 50% 50%; transform: rotateZ(0deg); }
+.sLeg2 { left: -30px; top: -30px; transform-origin: 50% 50%; transform: rotateZ(0deg); }
+.foot { left: -94px; top: 102px; transform-origin: 93px 22px; transform: rotateZ(0deg); }
+
+</style></head><body>
+<!--<audio src="http://cinemont.com/tutorials/howls/in_the_rain.mp3" autoplay loop></audio>-->
+<div class="legBox">
+
+        
+        <div class="leg">
+            <img class="zero" src="img/zero.png">
+            <img class="bLeg" src="img/bLeg.png">
+            <div class="bottomBox">
+                <img class="sLeg1" src="img/sLeg1.png">
+                <div class="bottomBox2">
+                    <img class="sLeg2" src="img/sLeg2.png">
+                    <img class="foot" src="img/foot.png">
+            </div>
+        </div>
+  
+</div>
+ 
+<img class="land" src="img/land.png">
+<script type="text/javascript" src="js/greensock/TweenMax.min.js"></script>
+<script src="js/jquery-1.11.2.js"></script>
+<script>
+
+
+
+var tlLeg = new TimelineMax({repeat: -1, delay: 0.7, onReverseComplete: function() {this.seek(tlLeg.duration())}});
+
+    var legBox = $('.legBox')
+    var zero = $('.zero')
+    var leg = $('.leg')
+    var bLeg = $('.bLeg')
+    var bottomBox = $('.bottomBox')
+    var sLeg1 = $('.sLeg1')
+    var bottomBox2 = $('.bottomBox2')
+    var sLeg2 = $('.sLeg2')
+    var foot = $('.foot')
+    var land = $('.land')
+    TweenLite.to(legBox, 1, {x:200, y:80});
+    TweenLite.to(land, 1, {x:-200, y:420});
+
+
+TweenLite.defaultEase = Power1.easeInOut;
+TweenLite.set(leg, {rotationZ:30});
+TweenLite.set(bottomBox2, {y:50});
+TweenLite.set(foot, {rotationZ:-30});
+
+tlLeg.timeScale(0.6);
+tlLeg.add([
+    TweenLite.to(leg, 1.0, {rotationZ: -30, delay: 0.0}),
+    TweenLite.to(leg, 0.5, {rotationZ: 45, delay: 1.0, ease:Power1.easeOut}),
+    TweenLite.to(leg, 0.5, {rotationZ: 30, delay: 1.5, ease:Power1.easeOut}),
+
+    TweenLite.to(foot, 1.0, {rotationZ: 30, delay: 0.0}),
+    TweenLite.to(foot, 1.0, {rotationZ: -30, delay: 1.0}),
+
+    TweenLite.to(bottomBox2, 0.6, {y: 0, delay: 0, ease:Power0.easeNone}),
+    TweenLite.to(bottomBox2, 0.5, {y: 10, delay: 1, ease:Power1.easeIn}),
+    TweenLite.to(bottomBox2, 0.5, {y: 50, delay: 1.5, ease:Power1.easeIn}),
+
+    TweenLite.to(bottomBox, 0.4, {rotationZ:-60, delay:0.6, ease:Power1.easeIn}),
+    TweenLite.to(bottomBox, 0.4, {rotationZ:0, delay:1.6}),
+]);
+
+
+</script>
+</body></html>
