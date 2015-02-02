@@ -4,7 +4,7 @@
 
 
 <style class="cp-pen-styles">html, body { height: 100%; margin: 0; background: #2294b3; overflow: hidden; }
-
+.dog
 .armL,
 .armR,
 .legL,
@@ -54,51 +54,72 @@
 <script src="js/jquery-1.11.2.js"></script>
 <script>
 
-    var dog = $('.dog')
-    var L = false;
-    TweenLite.to(dog, 1, {rotationY:20, y:"300px"});
-    addEventListener('mousedown', follow)
 
-    function follow(event)
-    {  
-        console.log("asd")
-       TweenLite.to(dog, 0.3, {x:event.pageX - 200, y:event.pageY - 150})
-    }
+
+    TweenLite.defaultEase = Power1.easeInOut;
+    var speed = 2;
+
 
     var tl1 = new TimelineMax({repeat: -1, delay:0, onReverseComplete: function() {this.seek(tl1.duration())}});
     var _armL = $('.armL');
-    TweenLite.set(_armL, {scaleY:1.2, rotationZ: 15});
+    TweenLite.set(_armL, {x:-5, rotationZ: 30});
     tl1.add([
-        TweenLite.to(_armL, 0.5, {scaleY:1, rotationZ: -15, delay: 0.0, force3D: true}),
-        TweenLite.to(_armL, 0.5, {scaleY:1.2, rotationZ: -10, delay: 0.5, overwrite:false, force3D: true}),
-        TweenLite.to(_armL, 1.0, {scaleY:1.2, rotationZ: 15, delay: 1, force3D: true}),
+        TweenLite.to(_armL, 0.5, {x:5, delay:0.0, force3D: true}),
+        TweenLite.to(_armL, 0.5, {x:-5, delay:0.5, force3D: true}),
+        TweenLite.to(_armL, 0.5, {rotationZ: -30, delay:0.0, force3D: true}),
+        TweenLite.to(_armL, 0.5, {rotationZ: 30, delay:0.5, force3D: true}),
+        TweenLite.to(_armL, 0.25, {scaleY:0.8, delay:0.0, force3D: true}),
+        TweenLite.to(_armL, 0.25, {scaleY:1, delay:0.25, force3D: true}),
     ]);
 
-    var tl2 = new TimelineMax({repeat: -1, delay:0.6, onReverseComplete: function() {this.seek(tl2.duration())}});
+    var tl2 = new TimelineMax({repeat: -1, delay:0.2, onReverseComplete: function() {this.seek(tl2.duration())}});
     var _armR = $('.armR');
-    TweenLite.set(_armR, {scaleY:1.2, rotationZ: 15});
+    TweenLite.set(_armR, {x:-5, rotationZ: 30});
     tl2.add([
-        TweenLite.to(_armR, 0.5, {scaleY:1, rotationZ: -15, delay: 0.0, force3D: true}),
-        TweenLite.to(_armR, 0.5, {scaleY:1.2, rotationZ: -10, delay: 0.5, overwrite:false, force3D: true}),
-        TweenLite.to(_armR, 1.0, {scaleY:1.2, rotationZ: 15, delay: 1, force3D: true}),
+        TweenLite.to(_armR, 0.5, {x:5, delay:0.0, force3D: true}),
+        TweenLite.to(_armR, 0.5, {x:-5, delay:0.5, force3D: true}),
+        TweenLite.to(_armR, 0.5, {rotationZ: -30, delay:0.0, force3D: true}),
+        TweenLite.to(_armR, 0.5, {rotationZ: 30, delay:0.5, force3D: true}),
+        TweenLite.to(_armR, 0.25, {scaleY:0.8, delay:0.0, force3D: true}),
+        TweenLite.to(_armR, 0.25, {scaleY:1, delay:0.25, force3D: true}),
     ]);
 
-    var tl3 = new TimelineMax({repeat: -1, delay:1.2, onReverseComplete: function() {this.seek(tl3.duration())}});
+    var tl3 = new TimelineMax({repeat: -1, delay:0.4, onReverseComplete: function() {this.seek(tl3.duration())}});
     var _legL = $('.legL');
-    TweenLite.set(_legL, {scaleY:1.2, rotationZ: 15});
+    TweenLite.set(_legL, {x:-5, rotationZ: 30});
     tl3.add([
-        TweenLite.to(_legL, 0.5, {scaleY:1, rotationZ: -15, delay: 0.0, force3D: true}),
-        TweenLite.to(_legL, 0.5, {scaleY:1.2, rotationZ: -10, delay: 0.5, overwrite:false, force3D: true}),
-        TweenLite.to(_legL, 1.0, {scaleY:1.2, rotationZ: 15, delay: 1, force3D: true}),
+        TweenLite.to(_legL, 0.5, {x:5, delay:0.0, force3D: true}),
+        TweenLite.to(_legL, 0.5, {x:-5, delay:0.5, force3D: true}),
+        TweenLite.to(_legL, 0.5, {rotationZ: -30, delay:0.0, force3D: true}),
+        TweenLite.to(_legL, 0.5, {rotationZ: 30, delay:0.5, force3D: true}),
+        TweenLite.to(_legL, 0.25, {scaleY:0.8, delay:0.0, force3D: true}),
+        TweenLite.to(_legL, 0.25, {scaleY:1, delay:0.25, force3D: true}),
     ]);
 
-    var tl4 = new TimelineMax({repeat: -1, delay:1.8, onReverseComplete: function() {this.seek(tl4.duration())}});
+    var tl4 = new TimelineMax({repeat: -1, delay:0.6, onReverseComplete: function() {this.seek(tl4.duration())}});
     var _legR = $('.legR');
-    TweenLite.set(_legR, {scaleY:1.2, rotationZ: 15});
+    TweenLite.set(_legR, {x:-5, rotationZ: 30});
     tl4.add([
-        TweenLite.to(_legR, 0.5, {scaleY:1, rotationZ: -15, delay: 0.0, force3D: true}),
-        TweenLite.to(_legR, 0.5, {scaleY:1.2, rotationZ: -10, delay: 0.5, overwrite:false, force3D: true}),
-        TweenLite.to(_legR, 1.0, {scaleY:1.2, rotationZ: 15, delay: 1, force3D: true}),
+        TweenLite.to(_legR, 0.5, {x:5, delay:0.0, force3D: true}),
+        TweenLite.to(_legR, 0.5, {x:-5, delay:0.5, force3D: true}),
+        TweenLite.to(_legR, 0.5, {rotationZ: -30, delay:0.0, force3D: true}),
+        TweenLite.to(_legR, 0.5, {rotationZ: 30, delay:0.5, force3D: true}),
+        TweenLite.to(_legR, 0.25, {scaleY:0.8, delay:0.0, force3D: true}),
+        TweenLite.to(_legR, 0.25, {scaleY:1, delay:0.25, force3D: true}),
     ]);
+
+    var tl0 = new TimelineMax({repeat: -1, delay:0.25, onReverseComplete: function() {this.seek(tl0.duration())}});
+    var _dog = $('.dog');
+    TweenLite.set(_dog, {y:0});
+    tl0.add([
+        TweenLite.to(_dog, 0.25, {y:-5, delay:0.0, force3D: true}),
+        TweenLite.to(_dog, 0.25, {y:0, delay:0.25, force3D: true}),
+    ]);
+
+    tl1.timeScale(speed)
+    tl2.timeScale(speed)
+    tl3.timeScale(speed)
+    tl4.timeScale(speed)
+    
 </script>
 </body></html>
