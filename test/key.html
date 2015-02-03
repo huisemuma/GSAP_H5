@@ -31,7 +31,7 @@ body{
  
 <script type="text/javascript" src="js/greensock/TweenMax.min.js"></script>
 <script src="js/jquery-1.11.2.js"></script>
- 
+<script src="keycode.js"></script>
 <script>
 $(window).load(function() {
 	var logo = document.getElementById("logo");
@@ -40,50 +40,10 @@ $(window).load(function() {
     var keyBox = [];
     TweenLite.to(logo, 1, {rotationY:180, y:"300px", left:"632px"});
 
-    function keyListen() {
-        console.log(logo.x)
-    }
-
-   window.setInterval(keyListen, 1000/100)
 
 
     function onKeyboardEvent (event){
-		switch(event.keyCode)
-		{
-    		case 65:
-    		if(!L)
-    		{
-    			TweenLite.to(logo, 0.1, {x:"-=11", rotationY:0, overwrite:false});
-    			L = true;
-    		}
-    		console.log("A");
-    		TweenLite.to(logo, 0.1, {x:"-=11"});
-    		break;
-    		
-    		case 68:
-    		if(L)
-    		{
-    			TweenLite.to(logo, 0.1, {x:"+=11", rotationY:180, overwrite:false});
-    			L = false;
-    		}
-    		console.log("D");
-    		TweenLite.to(logo, 0.1, {x:"+=11"});
-    		break;
-    		
-    		case 83:
-    		console.log("S");
-    		TweenLite.to(logo, 0.1, {y:"+=11"});
-    		break;
-    		
-    		case 87:
-    		console.log("W");
-    		//TweenLite.to(logo, 0.1, {y:"-=11"});
-    		jump();
-            break;
-    		
-    		default:
-    		//console.log(event.keyCode)
-    	}
+		console.log(keycode(event))
     }
 
     function jump()
