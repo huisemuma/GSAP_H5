@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>GreenSock: TimelineLite Labels</title>
+ 
+<style>
+body{
+    background-color:#000;
+}
+#demo {
+    width: 692px;
+    height: 570px;
+    background-color: #333;
+    padding: 8px;
+}
+#demoBackground {
+    position: absolute;
+    background-color: #000;
+    overflow: hidden;
+    width: 692px;
+    height: 570px;
+    visibility:hidden;
+}
+}
+</style>
+</head>
+ 
+<body>
+<div id="demo">
+  <div id="demoBackground">
+    <div id="dotContainer"></div>
+  </div>
+</div>
+ 
+
+<button id="particlesBtn">tl.play("particles")</button>
+ 
+<script type="text/javascript" src="js/greensock/TweenMax.min.js"></script>
+<script src="js/jquery-1.11.2.js"></script>
+ 
+<script>
+$(window).load(function() {
+    var dotContainer = $("#dotContainer"),
+        particlesBtn = $("#particlesBtn"), 
+        tl = new TimelineLite();
+         
+    // functions for building nested timelines
+     
+    function getParticlesAnimation() {
+        var particlesTimeline = new TimelineLite(),
+            i = 300,
+            radius = 450,
+            centerX= 360,
+            centerY = 30,
+            dots = [],
+            rawDots = [];
+             
+        while (--i > -1) {
+            dot = document.createElement("img");
+            dot.src = "img/logo_transparent.png";
+            dot.id = "dot" + i;
+            dotContainer.append(dot);
+            dot.style.cssText = "position:absolute; left:" + centerX + "px; top:" + centerY + "px; width:1px; height:1px;"
+            var angle = Math.random() * Math.PI * 2,
+                insertionTime = i * 0.015;
+                 
+            particlesTimeline.from(dot, 0, {left:0, top:0, alpha:0, width:1, height:1}, insertionTime);
+             
+            particlesTimeline.to(dot, 1.7, {left:Math.random() * 692, top:Math.random() * 570, alpha:1, width:32, height:32}, insertionTime);
+            particlesTimeline.to(dot, 0.5, {top:550, width:44, height:44, ease:Quad.easeIn}, insertionTime + 1.7);
+
+            particlesTimeline.to(dot, 0.5, {top:10, ease:Quad.easeIn}, insertionTime + 6.7);
+             
+        }
+        return particlesTimeline;
+    }             
+ 
+    // build timeline
+     
+    tl.add(getParticlesAnimation(), "particles")
+         
+    //controls
+                   
+             
+    particlesBtn.click(function() {
+        tl.play('particles');
+    });
+     
+    //show the demoBackground div after DOM is ready and all images loaded
+    TweenLite.set($("#demoBackground"), {visibility:"visible"});
+});
+ 
+</script>
+</body>
+</html>
