@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<title id = "tt">My First JavaScript</title>
+
+	</head>
+
+	<body>
+		<script>
+			/*var drink = "Cola";
+			var lyrics = "";
+			var cans = 99;
+
+			while (cans > 0)
+			{
+				lyrics = lyrics + cans + " cans of " + drink + " on the wall <br>";
+				lyrics = lyrics + cans + " cans of " + drink + "<br>";
+				lyrics = lyrics + "Take one down, pass it around,<br>";
+
+				if(cans > 1)
+				{
+					lyrics = lyrics + (cans - 1) + " cabs of " + drink + " on the wall <br>";
+				}
+				else
+				{
+					lyrics = lyrics + " No mpore cans of " + drink + " on the wall <br>";
+				}
+
+				cans = cans - 1;
+			}
+
+			document.write(lyrics);*/
+
+			var cans = 99;
+
+			while (cans > 1)
+			{
+				cans = Math.floor(cans / 2);
+				document.write(cans + " pig <br>")
+			}
+			
+			window.onload = changeTT;
+
+			function changeTT()
+			{
+				var TT = document.getElementById("tt");
+				TT.innerHTML = "lal123ala" + "hehe"
+				var button = document.getElementById("addButton")
+				button.onclick = handleButtonClick;
+			}
+
+			function handleButtonClick()
+			{
+				alert("哇哈哈哈！！！")
+			}
+
+
+
+		</script>
+		<h1 id = "H1">My Fox</h1>
+		<input type = "button" id = "addButton" value = "Add Song">
+	</body>
+</html>

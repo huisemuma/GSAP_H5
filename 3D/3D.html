@@ -41,6 +41,7 @@
     var redBox = $('.redBox')
     var redBox2 = $('.redBox2')
     var blueBox = $('.blueBox')
+    var boxArr = [redBox, redBox2, blueBox];
     var L = false;
     TweenLite.to(box, 4, {rotationY:"45deg", x:300, y:300});
     TweenLite.to(redBox2, 1, {scaleX:1.2, scaleY:1.2, z:20});
@@ -50,15 +51,23 @@
     {  
         console.log("down")
         //TweenLite.to(box, 0.3, {rotationY:75});
-        TweenLite.to(blueBox, 0.3, {scaleX:1.5, scaleY:1.5, z:60, force3D: true})
+        //TweenLite.to(blueBox, 0.3, {scaleX:1.5, scaleY:1.5, z:60, force3D: true})
+        for(i = 0; i<3; i++)
+        {
+            TweenLite.to(boxArr[i], 0.3, {x:100*i, force3D: true})
+        }
     }
 
     function mUp(event)
     {  
         console.log("up")
         //TweenLite.to(box, 0.3, {rotationY:0});
-        TweenLite.to(blueBox, 0.3, {scaleX:1, scaleY:1, z:0, force3D: true})
-        console.log(blueBox.z);
+        //TweenLite.to(blueBox, 0.3, {scaleX:1, scaleY:1, z:0, force3D: true})
+        //console.log(blueBox.z);
+        for(i = 0; i<3; i++)
+        {
+            TweenLite.to(boxArr[i], 0.3, {x:0, force3D: true})
+        }
     }
 
 
