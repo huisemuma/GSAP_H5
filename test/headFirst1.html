@@ -47,12 +47,25 @@
 				var TT = document.getElementById("tt");
 				TT.innerHTML = "lal123ala" + "hehe"
 				var button = document.getElementById("addButton")
-				button.onclick = handleButtonClick;
+				//button.onclick = handleButtonClick;
+				button.addEventListener("mousedown",handleButtonClick,false); 
 			}
 
 			function handleButtonClick()
 			{
-				alert("哇哈哈哈！！！")
+				var textInput = document.getElementById("songTextInput");
+
+				var songName = textInput.value;
+
+				var li = document.createElement("li");
+
+				li.innerHTML = songName;
+
+				var ul = document.getElementById("playlist");
+
+				ul.appendChild(li);
+				
+				//document.write("哇哈哈哈！！！" + " pig <br>")
 			}
 
 
